@@ -1,0 +1,17 @@
+prompt_options || return 1
+
+write_to_rc <<-EOF
+say_please()
+{
+    while true; do
+        echo -n "Say please: "
+        read answer
+
+        if [ "\$answer" == "please" ]; then
+            break
+        fi
+    done
+}
+
+export PROMPT_COMMAND="say_please; \$PROMPT_COMMAND"
+EOF
